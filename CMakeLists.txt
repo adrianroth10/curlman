@@ -6,23 +6,28 @@ find_package(CURL REQUIRED)
 
 qt_standard_project_setup()
 
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
 qt_add_executable(curlman
     WIN32 MACOSX_BUNDLE
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
-    request.h
-    request.cpp
-    header.h
-    header.cpp
-    appsettings.cpp
-    appsettings.h
-    response.h
-    response.cpp
-    headervector.h
-    headervector.cpp
+    src/main.cpp
+    src/mainwindow.cpp
+    src/appsettings.cpp
+    src/header.cpp
+    src/headervector.cpp
+    src/request.cpp
+    src/response.cpp
+
+    include/mainwindow.h
+    include/appsettings.h
+    include/header.h
+    include/headervector.h
+    include/request.h
+    include/response.h
+
+    ui/mainwindow.ui
 )
+
+target_include_directories(curlman PRIVATE include)
 
 qt_add_translations(
     TARGETS curlman
@@ -33,7 +38,7 @@ target_link_libraries(curlman
     PRIVATE
         Qt::Core
         Qt::Widgets
-        ${CURL_LIBRARIES}
+        CURL::libcurl
 )
 
 install(TARGETS curlman
