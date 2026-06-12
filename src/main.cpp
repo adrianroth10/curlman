@@ -14,6 +14,19 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
+    a.setStyleSheet(
+        "QWidget { background-color: #0a0a0a; color: #33ff33; font-family: 'Courier New', Consolas, monospace; font-weight: bold; }"
+        "QLineEdit, QTextEdit, QPlainTextEdit, QScrollArea, QWidget#scrollAreaWidgetContents { background-color: #000000; border: 1px solid #1f6b15; color: #33ff33; padding: 2px; }"
+        "QLineEdit:focus, QTextEdit:focus, QPlainTextEdit:focus { border: 1px solid #33ff33; }"
+        "QPushButton { background-color: #111111; border: 1px solid #33ff33; color: #33ff33; padding: 4px; }"
+        "QPushButton:hover { background-color: #33ff33; color: #000000; }"
+        "QPushButton:pressed { background-color: #1f6b15; color: #ffffff; }"
+        "QRadioButton::indicator { border: 1px solid #33ff33; width: 10px; height: 10px; background: #000000; }"
+        "QRadioButton::indicator:checked { background: #33ff33; }"
+        "QMenuBar, QMenu { background-color: #0a0a0a; color: #33ff33; border-bottom: 1px solid #1f6b15; }"
+        "QMenuBar::item:selected, QMenu::item:selected { background-color: #33ff33; color: #000000; }"
+        );
+
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
